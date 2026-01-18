@@ -1,9 +1,18 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from "@angular/core";
+import { Habit } from "./models/habit/habit.model.js";
+import { Todo } from "./models/todo/tido.model.js";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class StoreService {
+  habits = signal<Habit[]>([]);
+  todo = signal<Todo[]>([]);
 
-  constructor() { }
+  settings = signal<{ theme: "light" | "dark"; notifications: boolean }>({
+    theme: "light",
+    notifications: false,
+  });
+
+  constructor() {}
 }
